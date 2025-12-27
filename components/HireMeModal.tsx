@@ -65,11 +65,11 @@ export function HireMeModal() {
                                     </CardHeader>
                                     <CardContent className="text-center space-y-4">
                                         <p className="text-muted-foreground text-base">
-                                            This entire demo—booking, forms, and follow-ups—can be running for your business in less than a week.
+                                            This entire demo, plus customized patient experience upgrades and follow-ups can be running for your business in less than a week.
                                         </p>
                                         <div className="space-y-3">
                                             <Button className="w-full h-12 text-base font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-lg shadow-emerald-500/20" size="lg">
-                                                I want this for my clinic
+                                                I want this for my clinic!
                                             </Button>
                                             <Button
                                                 variant="ghost"
