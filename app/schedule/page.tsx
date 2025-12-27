@@ -36,9 +36,9 @@ export default function SchedulePage() {
 
                 <div className="w-full bg-white rounded-xl overflow-hidden shadow-2xl min-h-[700px]">
                     <iframe
-                        src="https://api.leadconnectorhq.com/widget/booking/lGzVVFd7LHYgo7gLGxrV"
-                        style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "700px" }}
-                        scrolling="no"
+                        src={`https://api.leadconnectorhq.com/widget/booking/lGzVVFd7LHYgo7gLGxrV?${searchParams.toString()}`}
+                        style={{ width: "100%", border: "none", height: "100vh", minHeight: "800px" }}
+                        scrolling="yes"
                         id="lGzVVFd7LHYgo7gLGxrV_1766851261475"
                         ref={iframeRef}
                     ></iframe>
