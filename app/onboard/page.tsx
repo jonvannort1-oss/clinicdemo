@@ -39,14 +39,14 @@ function OnboardForm() {
             return;
         }
 
-        // Format phone number: Send 1 + 10 digits (e.g. 15551234567) without the + sign.
+        // Format phone number: Send raw 10 digits only (no country code prefix)
         let formattedPhone = formData.phone.replace(/\D/g, ""); // Remove non-digits
 
-        if (formattedPhone.length === 10) {
-            formattedPhone = `1${formattedPhone}`;
-        } else if (formattedPhone.length === 11 && formattedPhone.startsWith("1")) {
-            // Already good
+        // If 11 digits starting with 1, strip the leading 1 to get 10 digits
+        if (formattedPhone.length === 11 && formattedPhone.startsWith("1")) {
+            formattedPhone = formattedPhone.substring(1);
         }
+        // Otherwise, just use the digits as-is (should be 10 digits)
 
         // Construct query params
         const params = new URLSearchParams({
