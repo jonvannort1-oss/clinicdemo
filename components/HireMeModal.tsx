@@ -12,7 +12,20 @@ export function HireMeModal() {
     useEffect(() => {
         // Show modal after 20 seconds
         const timer = setTimeout(() => setIsOpen(true), 20000);
-        return () => clearTimeout(timer);
+
+        // Aggressive Exit Intent: Trigger whenever mouse leaves window top
+        const handleMouseLeave = (e: MouseEvent) => {
+            if (e.clientY <= 0) {
+                setIsOpen(true);
+            }
+        };
+
+        document.addEventListener("mouseleave", handleMouseLeave);
+
+        return () => {
+            clearTimeout(timer);
+            document.removeEventListener("mouseleave", handleMouseLeave);
+        };
     }, []);
 
     return (
@@ -34,7 +47,7 @@ export function HireMeModal() {
                     >
                         <div className="pointer-events-auto">
                             <div className="relative rounded-xl p-[2px] overflow-hidden bg-gradient-to-br from-emerald-400 via-emerald-500 to-teal-600 shadow-2xl">
-                                <Card className="border-0 bg-background/95 backdrop-blur-xl relative pb-6">
+                                <Card className="border-0 bg-background/95 backdrop-blur-xl relative pb-4">
                                     <button
                                         onClick={() => setIsOpen(false)}
                                         className="absolute right-4 top-4 rounded-full p-1 opacity-70 hover:bg-muted transition-all hover:opacity-100 focus:outline-none"
@@ -50,13 +63,13 @@ export function HireMeModal() {
                                             Ready to automate your clinic?
                                         </CardTitle>
                                     </CardHeader>
-                                    <CardContent className="text-center space-y-6">
+                                    <CardContent className="text-center space-y-4">
                                         <p className="text-muted-foreground text-base">
                                             This entire demo—booking, forms, and follow-ups—can be running for your business in less than a week.
                                         </p>
                                         <div className="space-y-3">
                                             <Button className="w-full h-12 text-base font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-lg shadow-emerald-500/20" size="lg">
-                                                Start Your Project With Me
+                                                I want this for my clinic
                                             </Button>
                                             <Button
                                                 variant="ghost"
